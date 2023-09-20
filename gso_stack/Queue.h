@@ -4,8 +4,9 @@
 
 class Queue : public DataStructure {
 public:
-	Queue(const std::string& name);
+	Queue();
 
 	virtual void rm() override;
+	virtual void getItems() override;
 };
 

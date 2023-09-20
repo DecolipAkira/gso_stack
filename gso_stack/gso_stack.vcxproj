@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataStructure.cpp" />
+    <ClCompile Include="Helper.cpp" />
+    <ClCompile Include="Process.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Queue.cpp" />
@@ -136,6 +138,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h" />
+    <ClInclude Include="Helper.h" />
+    <ClInclude Include="Process.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="resource.h" />

@@ -4,8 +4,9 @@
 
 class Stack : public DataStructure {
 public:
-	Stack(const std::string& name);
+	Stack();
 
-	void rm() override;
+	virtual void rm() override;
+	virtual void getItems() override;
 };
 

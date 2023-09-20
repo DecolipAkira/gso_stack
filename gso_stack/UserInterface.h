@@ -13,11 +13,7 @@ public:
 	};
 
 	void start();
-	void addOption(const std::string& description, std::function<void()> action, std::vector<Middleware> middlewares);
-
-	static void message(const std::string& text);
-	static void messageEndl(const std::string& text, int times = 1);
-	static void endl(int times = 1);
+	void addOption(const std::string& description, std::function<void()> action, std::vector<Middleware> middlewares = {});
 private:
 	struct Option {
 		std::string description;

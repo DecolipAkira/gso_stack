@@ -1,8 +1,9 @@
 #include "UserInterface.h"
+#include "Helper.h"
 
 void UserInterface::start() {
 	do {
-		system("cls");
+		Helper::clear();
 		
 		menu();
 
@@ -22,30 +23,14 @@ void UserInterface::addOption(const std::string& description, std::function<void
 	options.push_back(option);
 }
 
-void UserInterface::message(const std::string& text) {
-	std::cout << text;
-}
-
-void UserInterface::endl(int times)
-{
-	for(int i = 0; i < times; ++i)
-		std::cout << std::endl;
-}
-
-void UserInterface::messageEndl(const std::string& text, int times) {
-	message(text);
-
-	endl(times);
-}
-
 bool UserInterface::verifyMiddlewares(std::vector<Middleware> middlewares) {
 	bool result = true;
 
 	for (Middleware middleware : middlewares) {
 		if (!middleware.verify()) {
-			messageEndl(middleware.message, 2);
+			Helper::messageEndl(middleware.message, 2);
 
-			system("pause");
+			Helper::pause();
 
 			return false;
 		}
@@ -55,14 +40,14 @@ bool UserInterface::verifyMiddlewares(std::vector<Middleware> middlewares) {
 }
 
 void UserInterface::menu() {
-	messageEndl("Opções Disponíveis: ", 2);
+	Helper::messageEndl("Opções Disponíveis: ", 2);
 
 	for (size_t i = 0; i < options.size(); ++i)
-		messageEndl("[" + std::to_string(i + 1) + "] " + options[i].description);
+		Helper::messageEndl("[" + std::to_string(i + 1) + "] " + options[i].description);
 
-	messageEndl("[0] Sair", 2);
+	Helper::messageEndl("[0] Sair", 2);
 
-	message("Escolha uma opção: ");
+	Helper::message("Escolha uma opção: ");
 
 	std::cin >> chosenOption;
 }
@@ -75,12 +60,12 @@ bool UserInterface::verifyChosenAction() {
 }
 
 void UserInterface::executeChosenAction() {
-	system("cls");
+	Helper::clear();
 
 	if (!verifyMiddlewares(options[chosenOption - 1].middlewares))
 		return;
 
 	options[chosenOption - 1].action();
 
-	system("pause");
+	Helper::pause();
 }

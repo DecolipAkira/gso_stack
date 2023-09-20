@@ -1,16 +1,33 @@
 #include "DataStructure.h"
+#include "Helper.h"
 
-DataStructure::DataStructure(const std::string& name) : structureName(name) {}
+DataStructure::DataStructure(const std::string& name, int resourceLimit) : structureName(name), resourceLimit(resourceLimit) {}
 
-void DataStructure::add(int value) {
-	items.push_back(value);
+bool DataStructure::hasResourcesTo(Process process) {
+	int sum = 0;
+
+	for (Process item : items)
+		sum += item.resourceUsage;
+
+	if (resourceLimit - sum < process.resourceUsage)
+		return false;
+
+	return true;
+}
+
+void DataStructure::add(Process process) {
+	if(hasResourcesTo(process))
+		items.push_back(process);
 }
 
 void DataStructure::show() {
-	std::cout << structureName << ": ";
+	Helper::messageEndl(structureName + ": ", 2);
 
-	for (int item : items)
-		std::cout << item << " ";
+	getItems();
 
-	std::cout << std::endl;
+	Helper::endl(2);
+}
+
+std::string DataStructure::getName() {
+	return structureName;
 }

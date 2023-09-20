@@ -9,6 +9,6 @@ void Stack::rm() {
 }
 
 void Stack::getItems() {
-	for (Process item : items)
-		Helper::messageEndl("[" + item.name + "]");
+	for (int i = items.size(); i --> 0;)
+		Helper::messageEndl("[" + items[i].name + "]");
 }

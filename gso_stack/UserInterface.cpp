@@ -1,16 +1,16 @@
 #include "UserInterface.h"
 #include "Helper.h"
 
-void UserInterface::start() {
+void UserInterface::start(int optionZero, bool pauseAfterAction, bool finishAfterChoosingOption) {
 	do {
 		Helper::clear();
 		
-		menu();
+		menu(optionZero);
 
 		if (verifyChosenAction())
-			executeChosenAction();
+			executeChosenAction(pauseAfterAction);
 
-	} while (chosenOption != 0);
+	} while (!finishAfterChoosingOption && chosenOption != 0);
 }
 
 void UserInterface::addOption(const std::string& description, std::function<void()> action, std::vector<Middleware> middlewares) {
@@ -39,13 +39,20 @@ bool UserInterface::verifyMiddlewares(std::vector<Middleware> middlewares) {
 	return true;
 }
 
-void UserInterface::menu() {
+void UserInterface::menu(int optionZero) {
 	Helper::messageEndl("Opções Disponíveis: ", 2);
 
 	for (size_t i = 0; i < options.size(); ++i)
 		Helper::messageEndl("[" + std::to_string(i + 1) + "] " + options[i].description);
 
-	Helper::messageEndl("[0] Sair", 2);
+	switch (optionZero) {
+		case 0:
+			Helper::messageEndl("[0] Sair", 2);
+			break;
+		case 1:
+			Helper::messageEndl("[0] Voltar", 2);
+			break;
+	}
 
 	Helper::message("Escolha uma opção: ");
 
@@ -59,7 +66,7 @@ bool UserInterface::verifyChosenAction() {
 	return true;
 }
 
-void UserInterface::executeChosenAction() {
+void UserInterface::executeChosenAction(bool pauseAfterAction) {
 	Helper::clear();
 
 	if (!verifyMiddlewares(options[chosenOption - 1].middlewares))
@@ -67,5 +74,6 @@ void UserInterface::executeChosenAction() {
 
 	options[chosenOption - 1].action();
 
-	Helper::pause();
+	if(pauseAfterAction)
+		Helper::pause();
 }

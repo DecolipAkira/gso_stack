@@ -17,6 +17,7 @@ public:
 	virtual void show();
 	virtual std::string getName();
 	virtual bool hasResourcesTo(Process process);
+	virtual bool empty();
 
 	virtual void rm() = 0;
 	virtual void getItems() = 0;

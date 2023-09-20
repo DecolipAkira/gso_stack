@@ -12,7 +12,7 @@ public:
 		std::function<bool()> verify;
 	};
 
-	void start();
+	void start(int optionZero = 0, bool pauseAfterAction = true, bool finishAfterChoosingOption= false);
 	void addOption(const std::string& description, std::function<void()> action, std::vector<Middleware> middlewares = {});
 private:
 	struct Option {
@@ -27,9 +27,9 @@ private:
 
 	int chosenOption;
 
-	void menu();
+	void menu(int optionZero);
 
 	bool verifyChosenAction();
-	void executeChosenAction();
+	void executeChosenAction(bool pauseAfterAction);
 };
 

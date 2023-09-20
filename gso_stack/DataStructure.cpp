@@ -21,13 +21,18 @@ void DataStructure::add(Process process) {
 }
 
 void DataStructure::show() {
-	Helper::messageEndl(structureName + ": ", 2);
-
-	getItems();
+	if (empty())
+		Helper::message("<vázio>");
+	else
+		getItems();
 
 	Helper::endl(2);
 }
 
 std::string DataStructure::getName() {
 	return structureName;
+}
+
+bool DataStructure::empty() {
+	return items.empty();
 }

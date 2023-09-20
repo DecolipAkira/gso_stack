@@ -57,8 +57,6 @@ int main() {
 
 		for (Process process : processes) {
 			insertInterface.addOption(process.name, [&, process]() {
-				
-
 				if (structure->hasResourcesTo(process)) {
 					structure->add(process);
 
@@ -66,25 +64,40 @@ int main() {
 				} else {
 					Helper::messageEndl("Processo " + process.name + " não adicionado a " + structure->getName() + ", por falta de Recursos!", 2);
 				}
-					
 			});
 		}
 
-		insertInterface.start();
+		insertInterface.start(1);
 	}, middlewares);
 
 	interface.addOption("Remover", [&]() {
-		Helper::messageEndl("Opção Remover:", 2);
+		if (structure->empty()) {
+			Helper::messageEndl("A " + structure->getName() + " está vázia, não há Processos para remover!", 2);
+
+			Helper::pause();
+
+			return;
+		}
+
+		Helper::messageEndl("Processo removido com sucesso.", 2);
+
+		Helper::messageEndl(structure->getName() + "(antes): ", 2);
+		structure->show();
 
 		structure->rm();
 
-		Helper::messageEndl("Valor removido com sucesso.", 2);
-
+		Helper::messageEndl(structure->getName() + "(depois): ", 2);
 		structure->show();
+
+		Helper::pause();
 	}, middlewares);
 
 	interface.addOption("Mostrar", [&] {
+		Helper::messageEndl(structure->getName() + ": ", 2);
+
 		structure->show();
+
+		Helper::pause();
 	}, middlewares);
 
 	interface.addOption("Definir Estrutura", [&]() {
@@ -106,10 +119,10 @@ int main() {
 			Helper::messageEndl(structure->getName() + " definida como Estrutura de Dados.", 2);
 		});
 
-		defineDataStructure.start();
+		defineDataStructure.start(1, true, true);
 	});
 
-	interface.start();
+	interface.start(0, false);
 
 	resetStructure();
 

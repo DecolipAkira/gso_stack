@@ -62,7 +62,7 @@ int main() {
 
 					Helper::messageEndl("Processo " + process.name + " adicionado a " + structure->getName(), 2);
 				} else {
-					Helper::messageEndl("Processo " + process.name + " n„o adicionado a " + structure->getName() + ", por falta de Recursos!", 2);
+					Helper::messageEndl("Processo " + process.name + " n√£o adicionado a " + structure->getName() + ", por falta de Recursos!", 2);
 				}
 			});
 		}
@@ -72,7 +72,7 @@ int main() {
 
 	interface.addOption("Remover", [&]() {
 		if (structure->empty()) {
-			Helper::messageEndl("A " + structure->getName() + " est· v·zia, n„o h· Processos para remover!", 2);
+			Helper::messageEndl("A " + structure->getName() + " est√° v√°zia, n√£o h√° Processos para remover!", 2);
 
 			Helper::pause();
 

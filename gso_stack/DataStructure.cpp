@@ -2,6 +2,7 @@
 #include "Helper.h"
 
 DataStructure::DataStructure(const std::string& name, int resourceLimit) : structureName(name), resourceLimit(resourceLimit) {}
+DataStructure::~DataStructure() {}
 
 bool DataStructure::hasResourcesTo(Process process) {
 	int sum = 0;
@@ -22,7 +23,7 @@ void DataStructure::add(Process process) {
 
 void DataStructure::show() {
 	if (empty())
-		Helper::message("<vázio>");
+		Helper::message("<vÃ¡zio>");
 	else
 		getItems();
 

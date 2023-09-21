@@ -40,7 +40,7 @@ bool UserInterface::verifyMiddlewares(std::vector<Middleware> middlewares) {
 }
 
 void UserInterface::menu(int optionZero) {
-	Helper::messageEndl("Opções Disponíveis: ", 2);
+	Helper::messageEndl("OpÃ§Ãµes DisponÃ­veis: ", 2);
 
 	for (size_t i = 0; i < options.size(); ++i)
 		Helper::messageEndl("[" + std::to_string(i + 1) + "] " + options[i].description);
@@ -54,7 +54,7 @@ void UserInterface::menu(int optionZero) {
 			break;
 	}
 
-	Helper::message("Escolha uma opção: ");
+	Helper::message("Escolha uma opÃ§Ãµes: ");
 
 	std::cin >> chosenOption;
 }

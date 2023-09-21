@@ -32,7 +32,7 @@ void Helper::pause() {
 #if _WIN32 || _WIN64
 	system("pause");
 #elif __APPLE__ || __MACH__
-	system("read -n 1 -s -p \"Pressione qualquer tecla para continuar. . .\");
+	system("read -n 1 -s -p \"Pressione qualquer tecla para continuar. . .\"");
 #else
 	message("Pressione qualquer tecla para continuar. . .");
 	std::cin.ignore().get();

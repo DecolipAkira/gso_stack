@@ -13,6 +13,7 @@ protected:
 	int resourceLimit;
 public:
 	DataStructure(const std::string& name, int resourceLimit);
+	virtual ~DataStructure();
 	virtual void add(Process process);
 	virtual void show();
 	virtual std::string getName();

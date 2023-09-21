@@ -19,7 +19,7 @@ O professor **Rodrigo de Souza** não apenas nos ensinou, mas também nos inspir
 Muito obrigado, professor **Rodrigo de Souza**, por ser uma parte fundamental deste projeto e por nos ajudar a crescer em nossa jornada acadêmica. Seu apoio fez toda a diferença. ❤️
 
 
-## Como executar o projeto?!
+## Como executar o projeto?
 
 ### Usando o Visual Studio
 
@@ -50,4 +50,5 @@ g++ DataStructure.cpp Helper.cpp Process.cpp Queue.cpp Stack.cpp UserInterface.c
 Se tiver alguma dúvida sobre o projeto, não hesite em entrar em contato comigo:
 
 **E-mail:** andre.telles@fatec.sp.gov.br
+
 **WhatsApp:** (11) 9 8559-6362

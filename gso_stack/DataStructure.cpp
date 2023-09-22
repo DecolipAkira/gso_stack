@@ -17,13 +17,13 @@ bool DataStructure::hasResourcesTo(Process process) {
 }
 
 void DataStructure::add(Process process) {
-	if(hasResourcesTo(process))
+	if (hasResourcesTo(process))
 		items.push_back(process);
 }
 
 void DataStructure::show() {
 	if (empty())
-		Helper::message("<vÃ¡zio>");
+		Helper::message("<vázio>");
 	else
 		getItems();
 

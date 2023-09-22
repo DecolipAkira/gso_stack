@@ -4,7 +4,7 @@
 void UserInterface::start(int optionZero, bool pauseAfterAction, bool finishAfterChoosingOption) {
 	do {
 		Helper::clear();
-		
+
 		menu(optionZero);
 
 		if (verifyChosenAction())
@@ -40,21 +40,21 @@ bool UserInterface::verifyMiddlewares(std::vector<Middleware> middlewares) {
 }
 
 void UserInterface::menu(int optionZero) {
-	Helper::messageEndl("OpÃ§Ãµes DisponÃ­veis: ", 2);
+	Helper::messageEndl("Opções Disponíveis: ", 2);
 
 	for (size_t i = 0; i < options.size(); ++i)
 		Helper::messageEndl("[" + std::to_string(i + 1) + "] " + options[i].description);
 
 	switch (optionZero) {
-		case 0:
-			Helper::messageEndl("[0] Sair", 2);
-			break;
-		case 1:
-			Helper::messageEndl("[0] Voltar", 2);
-			break;
+	case 0:
+		Helper::messageEndl("[0] Sair", 2);
+		break;
+	case 1:
+		Helper::messageEndl("[0] Voltar", 2);
+		break;
 	}
 
-	Helper::message("Escolha uma opÃ§Ãµes: ");
+	Helper::message("Escolha uma opção: ");
 
 	std::cin >> chosenOption;
 }
@@ -74,6 +74,6 @@ void UserInterface::executeChosenAction(bool pauseAfterAction) {
 
 	options[chosenOption - 1].action();
 
-	if(pauseAfterAction)
+	if (pauseAfterAction)
 		Helper::pause();
 }

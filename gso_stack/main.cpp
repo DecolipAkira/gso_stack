@@ -34,7 +34,7 @@ int main() {
 
 		delete structure;
 		structure = nullptr;
-	};
+		};
 
 	UserInterface interface;
 
@@ -46,7 +46,7 @@ int main() {
 			return false;
 
 		return true;
-	};
+		};
 
 	std::vector<UserInterface::Middleware> middlewares;
 
@@ -61,18 +61,19 @@ int main() {
 					structure->add(process);
 
 					Helper::messageEndl("Processo " + process.name + " adicionado a " + structure->getName(), 2);
-				} else {
-					Helper::messageEndl("Processo " + process.name + " nÃ£o adicionado a " + structure->getName() + ", por falta de Recursos!", 2);
 				}
-			});
+				else {
+					Helper::messageEndl("Processo " + process.name + " não adicionado a " + structure->getName() + " por falta de Recursos!", 2);
+				}
+				});
 		}
 
 		insertInterface.start(1);
-	}, middlewares);
+		}, middlewares);
 
 	interface.addOption("Remover", [&]() {
 		if (structure->empty()) {
-			Helper::messageEndl("A " + structure->getName() + " estÃ¡ vÃ¡zia, nÃ£o hÃ¡ Processos para remover!", 2);
+			Helper::messageEndl("A " + structure->getName() + " está vázia, não há Processos para remover!", 2);
 
 			Helper::pause();
 
@@ -90,7 +91,7 @@ int main() {
 		structure->show();
 
 		Helper::pause();
-	}, middlewares);
+		}, middlewares);
 
 	interface.addOption("Mostrar", [&] {
 		Helper::messageEndl(structure->getName() + ": ", 2);
@@ -98,7 +99,7 @@ int main() {
 		structure->show();
 
 		Helper::pause();
-	}, middlewares);
+		}, middlewares);
 
 	interface.addOption("Definir Estrutura", [&]() {
 		UserInterface defineDataStructure;
@@ -109,7 +110,7 @@ int main() {
 			structure = new Stack;
 
 			Helper::messageEndl(structure->getName() + " definida como Estrutura de Dados.", 2);
-		});
+			});
 
 		defineDataStructure.addOption("Fila", [&]() {
 			resetStructure();
@@ -117,10 +118,10 @@ int main() {
 			structure = new Queue;
 
 			Helper::messageEndl(structure->getName() + " definida como Estrutura de Dados.", 2);
-		});
+			});
 
 		defineDataStructure.start(1, true, true);
-	});
+		});
 
 	interface.start(0, false);
 
